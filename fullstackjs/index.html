@@ -40,58 +40,141 @@
 
             <!-- Any section element inside of this container is displayed as a slide -->
             <div class="slides">
-                <section>
-                    <h1>FullStack JS</h1>
-                    <h3>A Not-So Functional JavaScript Game without a Library</h3>
-                    <p> <small>Created by <a href="http://whimstudio.com">Khalid</a> </small></p>
-                </section>
 
                 <section>
-                    <h2>Bio</h2>
-                    <p>
-                        Founder of NextLeap
-                    </p>
-                    <p>
-                        Hobbyist Programmer
-                    </p>
-                    <p>
-                        Attended Recurse Center
-                    </p>
-                </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            # Not So Functional Retro Game without a Library
+                            ## with JavaScript ES6
+                        </script>
+                    </section>
 
-                <section data-markdown>
-                    <script type="text/template">
-                        ## Markdown support
+                    <section>
+                        <h2>Bio</h2>
+                        <p>
+                            Hobbyist Programmer
+                        </p>
+                    </section>
 
-                        Write content using inline or external Markdown.
-                        Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+                    <section>
+                        <h2> Elm Architecture </h2>
+                        <p> Model </p>
+                        <p> Update </p>
+                        <p> View </p>
+                    </section>
 
-                        ```
-                        // do something
+                    <section>
+                        <h2> Immutability without a Library </h2>
+                        <p> Steal ideas from Clojure </p>
+                    </section>
 
-                        ```
-                    </script>
-                </section>
-
-                <section>
-                    <h2>Pretty Code</h2>
-                    <pre><code class="hljs" data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
+                    <section>
+                        <h2>Model</h2>
+                        <pre><code class="hljs" data-trim contenteditable>
+function AssocMixin(constr, args) {
+  return (key, val) => {
+    let newArgs = Object.assign({}, args);
+    newArgs[key] = val;
+    return constr(newArgs);
+  };
+}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Model</h2>
+                        <pre><code class="hljs" data-trim contenteditable>
+function MergeMixin(constr, args) {
+  return obj => {
+    let copy = Object.assign({}, args);
+    let newArgs = Object.assign(copy, obj);
+    return constr(newArgs);
   }
 }
-                    </code></pre>
+                        </code></pre>
+                    </section>
 
+                    <section>
+                        <h2>Model</h2>
+                        <pre><code class="hljs" data-trim contenteditable>
+function Player(args) {
+  let {x = canvas.width / 2} = args;
+  let assoc = AssocMixin(Player, args);
+  let merge = MergeMixin(Player, args);
+  let that = Object.freeze({
+    x,
+    y: canvas.height - 50,
+    w: 25,
+    h: 25,
+    color: 'blue',
+    assoc,
+    merge,
+    update: () => that
+  });
+  return that;
+}
+                        </code></pre>
+                    </section>
+
+
+                    <section>
+                        <h2>Model</h2>
+                        <pre><code class="hljs" data-trim contenteditable>
+function Enemy(args) {
+  let {x, y} = args;
+  let assoc = AssocMixin(Enemy, args);
+  let merge = MergeMixin(Enemy, args);
+  let that = Object.freeze({
+    x,
+    y,
+    w: 25,
+    h: 25,
+    color: 'red',
+    assoc,
+    merge,
+    update: velX => assoc("x", x + velX)
+  });
+  return that;
+}
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Model</h2>
+                        <pre><code class="hljs" data-trim contenteditable>
+function Bullet(args) {
+  let {x, y, d, color} = args;
+  let assoc = AssocMixin(Bullet, args);
+  let merge = MergeMixin(Bullet, args);
+  let that = Object.freeze({
+    x,
+    y,
+    w: 5,
+    h: 5,
+    d,
+    color,
+    assoc,
+    merge,
+    update: () => assoc("y", y + d)
+  });
+  return that;
+}
+
+function PlayerBullet(args) {
+  let {x, y} = args;
+  return Bullet({
+    x, y, d: -1, color: 'white'
+  });
+}
+
+function EnemyBullet(args) {
+  let {x, y} = args;
+  return Bullet({
+    x, y, d: 1, color: '#FF9900'
+  });
+}
+
+                        </code></pre>
+                    </section>
             </div>
 
         </div>
@@ -102,7 +185,7 @@ function linkify( selector ) {
         <script>
 
          // Full list of configuration options available at:
-                // https://github.com/hakimel/reveal.js#configuration
+         // https://github.com/hakimel/reveal.js#configuration
          Reveal.initialize({
              controls: true,
              progress: true,
@@ -115,14 +198,14 @@ function linkify( selector ) {
              dependencies: [
                  { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
                  { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					       { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					       { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					       { src: 'plugin/zoom-js/zoom.js', async: true },
-					       { src: 'plugin/notes/notes.js', async: true }
-				     ]
-			   });
+                 { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                 { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                 { src: 'plugin/zoom-js/zoom.js', async: true },
+                 { src: 'plugin/notes/notes.js', async: true }
+             ]
+         });
 
-		    </script>
+        </script>
 
-	  </body>
+    </body>
 </html>
