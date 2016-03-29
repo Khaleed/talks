@@ -1,6 +1,6 @@
 ## Presentations
 
-These are the talks that I have decided to give in order to share my desire for game development, functional programming, and data science.
+These are the talks that I have decided to give in order to share my excitement for game development, functional programming, and data science.
 
 ## Goal
 
