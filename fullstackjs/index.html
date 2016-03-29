@@ -44,33 +44,73 @@
                 <section>
                     <section data-markdown>
                         <script type="text/template">
-                            # Not So Functional Retro Game without a Library
+                            # A Not So Functional Retro Game without a Library
                             ## with JavaScript ES6
                         </script>
                     </section>
 
-                    <section>
-                        <h2>Bio</h2>
-                        <p>
-                            Hobbyist Programmer
-                        </p>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Khalid
+                            <ul>
+                                <li class="fragment">Hobbyist Programmer</li>
+                                <li class="fragment">Spent 3 months at <a href="http://recurse.com">Recurse Center</a> in NYC</li>
+                                <ul>
+                                    <img style="position: absolute; left: -10px; top: 20%" src="https://d29xw0ra2h4o4u.cloudfront.net/assets/logo-no-text-ab02ba4e6d854337f7d7515e08f57520a82883ace40d22b4de689435cc211ffd.png"/>
+                                    <li  class="fragment">
+                                        Writer's retreat for programmers
+                                    </li>
+                                    <li  class="fragment">
+                                        Become a dramatically better programmer<br/> <small>by working on side projects!</small>
+                                    </li>
+                                </ul>
+        </li>
+        <li class="fragment">
+            I discovered Functional Programming
+        </li>
+                            </ul>
+                        </script>
                     </section>
 
-                    <section>
-                        <h2> Elm Architecture </h2>
-                        <p> Model </p>
-                        <p> Update </p>
-                        <p> View </p>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## JavaScript Retro Game
+                            <ul>
+                                <li class="fragment">Canvas - Graphics</li>
+                                <li class="fragment">Collission Detection</li>
+                                <li class="fragment">Game Loop</li>
+                                <li class="fragment">Rendering</li>
+                            </ul>
+                        </script>
                     </section>
 
-                    <section>
-                        <h2> Immutability without a Library </h2>
-                        <p> Steal ideas from Clojure </p>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Elm Architecture
+                            <ul>
+                                <li class="fragment">Model</li>
+                                <li class="fragment">Update</li>
+                                <li class="fragment">View</li>
+                            </ul>
+                        </script>
                     </section>
 
-                    <section>
-                        <h2>Model</h2>
-                        <pre><code class="hljs" data-trim contenteditable>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Immutablity without a library
+                            <ul>
+                                <li class="fragment">Object.assign()</li>
+                                <li class="fragment">Object.freeze()</li>
+                                <li class="fragment">Lispify JS by stealing functions from Clojure</li>
+                            </ul>
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script>
+                            ## Model
+                            <p> If one thing changes, use assoc <p>
+                                <pre><code class="hljs" data-trim contenteditable>
 function AssocMixin(constr, args) {
   return (key, val) => {
     let newArgs = Object.assign({}, args);
@@ -78,23 +118,41 @@ function AssocMixin(constr, args) {
     return constr(newArgs);
   };
 }
-                        </code></pre>
+                                </code></pre>
+                        </script>
                     </section>
-                    <section>
-                        <h2>Model</h2>
-                        <pre><code class="hljs" data-trim contenteditable>
-function MergeMixin(constr, args) {
-  return obj => {
-    let copy = Object.assign({}, args);
-    let newArgs = Object.assign(copy, obj);
-    return constr(newArgs);
-  }
-}
-                        </code></pre>
+
+                    <section data-markdown>
+                        <script>
+                         ## Model
+                         <p> If multiple things change, use merge <p>
+                         <pre><code class="hljs" data-trim contenteditable>
+                         function MergeMixin(constr, args) {
+                             return obj => {
+                                 let copy = Object.assign({}, args);
+                                 let newArgs = Object.assign(copy, obj);
+                                 return constr(newArgs);
+                             }
+                         }
+                         </code></pre>
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Model
+                            <p> Space Invaders Game Bodies </p>
+                            <ul>
+                                <li class="fragment">Protagonist</li>
+                                <li class="fragment">Enemies</li>
+                                <li class="fragment">Weaponery</li>
+                            </ul>
+                        </script>
                     </section>
 
                     <section>
                         <h2>Model</h2>
+                        <p> The Protagonist <p>
                         <pre><code class="hljs" data-trim contenteditable>
 function Player(args) {
   let {x = canvas.width / 2} = args;
@@ -115,9 +173,9 @@ function Player(args) {
                         </code></pre>
                     </section>
 
-
                     <section>
                         <h2>Model</h2>
+                        <p> The Enemies </p>
                         <pre><code class="hljs" data-trim contenteditable>
 function Enemy(args) {
   let {x, y} = args;
@@ -140,6 +198,7 @@ function Enemy(args) {
 
                     <section>
                         <h2>Model</h2>
+                        <p> Getting Armed </p>
                         <pre><code class="hljs" data-trim contenteditable>
 function Bullet(args) {
   let {x, y, d, color} = args;
