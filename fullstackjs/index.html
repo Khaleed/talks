@@ -153,7 +153,7 @@ function AssocMixin(constr, args) {
                     <section>
                         <h2>Model</h2>
                         <p> The Protagonist <p>
-                        <pre><code class="hljs" data-trim contenteditable>
+                            <pre><code class="hljs" data-trim contenteditable>
 function Player(args) {
   let {x = canvas.width / 2} = args;
   let assoc = AssocMixin(Player, args);
@@ -170,7 +170,7 @@ function Player(args) {
   });
   return that;
 }
-                        </code></pre>
+                            </code></pre>
                     </section>
 
                     <section>
@@ -234,6 +234,134 @@ function EnemyBullet(args) {
 
                         </code></pre>
                     </section>
+
+                    <section>
+                        <h2>Update</h2>
+                        <p> When there is a change in gamestate return a new game state </p>
+                        <pre><code class="hljs" data-trim contenteditable>
+
+function playerShoots() {
+    let newBullets = cond(
+      () => playerBulletNframeCounter === 0, makeNewBullet,
+      () => playerBullets);
+    let newCounter = cond(
+      () => playerBulletNframeCounter > 0, () => playerBulletNframeCounter - 1,
+      () => playerFinalBulletNframeCount);
+    let newGameState = merge({
+      playerBulletNframeCounter: newCounter,
+      playerBullets: newBullets
+    });
+    return newGameState;
+  };i
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Update</h2>
+                        <p> When there is no change in gamestate return the old gamestate </p>
+                        <pre><code class="hljs" data-trim contenteditable>
+let that = Object.freeze({
+    x,
+    y,
+    gameRunning,
+    enemyBullets,
+    playerBullets,
+    enemies,
+    playerFinalBulletNframeCount,
+    playerBulletNframeCounter,
+    player,
+    updateIfGameIsRunning,
+    bulletCollision,
+    enemyCollisionWithBorder,
+    enemyShootsAI,
+    updateBodies,
+    playerShoots,
+    updateGameLoop,
+    assoc,
+    merge,
+  });
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>View</h2>
+                        <p> Get The Stuff We Need </p>
+                        <pre><code class="hljs" data-trim contenteditable>
+'use strict';
+
+import {Enemy, Player, EnemyBullet, PlayerBullet} from './model';
+import inputs from './input';
+import keys from './keystate';
+import GameState from './state';
+
+  let canvas = inputs.canvas;
+  let status = inputs.status;
+  keys.addListeners();
+
+  function playSounds(oldState, newState) {
+    if (oldState.enemies.length > newState.enemies.length) {
+      inputs.invaderDiesSound.play();
+    }
+  }
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>View</h2>
+                        <p> The Entire Game Looks Like This </p>
+                        <pre><code class="hljs" data-trim contenteditable>
+window.addEventListener('load', () => {
+    let ctx;
+    if (canvas.getContext === undefined) {
+      console.error('browser does not support canvas');
+    } else {
+      ctx = canvas.getContext('2d');
+    }
+    canvas.width = 800;
+    canvas.height = 600;
+
+    function drawRect(rect) {
+      ctx.fillStyle = rect.color;
+      ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
+    }
+
+    function draw(gameState) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      gameState.enemies.map(enemy => drawRect(enemy));
+      gameState.enemyBullets.concat(gameState.playerBullets).map(bullet => drawRect(bullet));
+      if (gameState.player) {
+        drawRect(gameState.player);
+      }
+      setTimeout(() => update(gameState), 1);
+    };
+
+    function update(gameState) {
+      let frozenKeys = Object.assign({}, keys);
+      Object.freeze(frozenKeys);
+      let newGameState = gameState.updateIfGameIsRunning(frozenKeys);
+      playSounds(gameState, newGameState);
+      draw(newGameState);
+    };
+    draw(GameState({
+      inputs
+    }));
+                        </code></pre>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## DEMO
+                            <a href="http://pyb.github.io/ShootEmUp/">Pure Space Invaders</a>
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## That's it folks, thank you!
+                        </script>
+                    </section>
+
+
             </div>
 
         </div>
