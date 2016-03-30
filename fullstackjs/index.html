@@ -56,7 +56,7 @@
                                 <li class="fragment">Hobbyist Programmer</li>
                                 <li class="fragment">Spent 3 months at <a href="http://recurse.com">Recurse Center</a> in NYC</li>
                                 <ul>
-                                    <img style="position: absolute; left: -10px; top: 20%" src="https://d29xw0ra2h4o4u.cloudfront.net/assets/logo-no-text-ab02ba4e6d854337f7d7515e08f57520a82883ace40d22b4de689435cc211ffd.png"/>
+                                    <img style="position: absolute; left: -20px; top: 20%" src="https://d29xw0ra2h4o4u.cloudfront.net/assets/logo-no-text-ab02ba4e6d854337f7d7515e08f57520a82883ace40d22b4de689435cc211ffd.png"/>
                                     <li  class="fragment">
                                         Writer's retreat for programmers
                                     </li>
@@ -68,6 +68,18 @@
         <li class="fragment">
             I discovered this thing called functional programming
         </li>
+                            </ul>
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Game Development Is Hard
+                            <ul>
+                                <li class="fragment">Input</li>
+                                <li class="fragment">State</li>
+                                <li class="fragment">Time</li>
+                                <li class="fragment">Experiential/fun</li>
                             </ul>
                         </script>
                     </section>
@@ -114,7 +126,7 @@
                                     <li class="fragment">Object.freeze()</li>
                                 </ul>
                             </ul>
-                            <ul> <li class="fragment"> Lispify JS by stealing functions from Clojure</li></ul>
+                            <ul> <li class="fragment"> Lispify JS by stealing functions from ClojureScript</li></ul>
                         </script>
                     </section>
 
@@ -183,7 +195,7 @@ function Player(args) {
   return that;
 }
 
-                           </code></pre>
+                            </code></pre>
                     </section>
 
                     <section>
@@ -296,74 +308,10 @@ let that = Object.freeze({
                         </code></pre>
                     </section>
 
-                    <section>
-                        <h2>View</h2>
-                        <p> Get Game Inputs and Bodies </p>
-                        <pre><code class="hljs" data-trim contenteditable>
-'use strict';
-
-import {Enemy, Player, EnemyBullet, PlayerBullet} from './model';
-import inputs from './input';
-import keys from './keystate';
-import GameState from './state';
-
-  let canvas = inputs.canvas;
-  let status = inputs.status;
-  keys.addListeners();
-
-  function playSounds(oldState, newState) {
-    if (oldState.enemies.length > newState.enemies.length) {
-      inputs.invaderDiesSound.play();
-    }
-  }
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <h2>View</h2>
-                        <p> The Entire Game Looks Like This </p>
-                        <pre><code class="hljs" data-trim contenteditable>
-window.addEventListener('load', () => {
-    let ctx;
-    if (canvas.getContext === undefined) {
-      console.error('browser does not support canvas');
-    } else {
-      ctx = canvas.getContext('2d');
-    }
-    canvas.width = 800;
-    canvas.height = 600;
-
-    function drawRect(rect) {
-      ctx.fillStyle = rect.color;
-      ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
-    }
-
-    function draw(gameState) {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      gameState.enemies.map(enemy => drawRect(enemy));
-      gameState.enemyBullets.concat(gameState.playerBullets).map(bullet => drawRect(bullet));
-      if (gameState.player) {
-        drawRect(gameState.player);
-      }
-      setTimeout(() => update(gameState), 1);
-    };
-
-    function update(gameState) {
-      let frozenKeys = Object.assign({}, keys);
-      Object.freeze(frozenKeys);
-      let newGameState = gameState.updateIfGameIsRunning(frozenKeys);
-      playSounds(gameState, newGameState);
-      draw(newGameState);
-    };
-
-    draw(GameState({inputs}));
-  });
-                        </code></pre>
-                    </section>
-
                     <section data-markdown>
                         <script type="text/template">
-                            ## DEMO
+                            ## View
+                            <p> Demo Time </p>
                             <a href="http://pyb.github.io/ShootEmUp/">Pure Space Invaders</a>
                         </script>
                     </section>
@@ -387,7 +335,6 @@ window.addEventListener('load', () => {
                             <p>https://github.com/Khaleed/ShootEmUp<p>
                         </script>
                     </section>
-
 
             </div>
 
