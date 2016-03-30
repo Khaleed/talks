@@ -119,17 +119,17 @@
 
                     <section data-markdown>
                         <script>
-                            ## Model
-                            <p> If one thing changes, use assoc <p>
-                                <pre><code class="hljs" data-trim contenteditable>
-function AssocMixin(constr, args) {
-  return (key, val) => {
-    let newArgs = Object.assign({}, args);
-    newArgs[key] = val;
-    return constr(newArgs);
-  };
-}
-                                </code></pre>
+                         ## Model
+                         <p> If one thing changes, use assoc <p>
+                         <pre><code class="hljs" data-trim contenteditable>
+                         function AssocMixin(constr, args) {
+                             return (key, val) => {
+                                 let newArgs = Object.assign({}, args);
+                                 newArgs[key] = val;
+                                 return constr(newArgs);
+                             };
+                         }
+                         </code></pre>
                         </script>
                     </section>
 
@@ -165,22 +165,22 @@ function AssocMixin(constr, args) {
                         <h2>Model</h2>
                         <p> The Protagonist <p>
                             <pre><code class="hljs" data-trim contenteditable>
-function Player(args) {
-  let {x = canvas.width / 2} = args;
-  let assoc = AssocMixin(Player, args);
-  let merge = MergeMixin(Player, args);
-  let that = Object.freeze({
-    x,
-    y: canvas.height - 50,
-    w: 25,
-    h: 25,
-    color: 'blue',
-    assoc,
-    merge,
-    update: () => that
-  });
-  return that;
-}
+                            function Player(args) {
+                            let {x = canvas.width / 2} = args;
+                            let assoc = AssocMixin(Player, args);
+                            let merge = MergeMixin(Player, args);
+                            let that = Object.freeze({
+                            x,
+                            y: canvas.height - 50,
+                            w: 25,
+                            h: 25,
+                            color: 'blue',
+                            assoc,
+                            merge,
+                            update: () => that
+                            });
+                            return that;
+                            }
                             </code></pre>
                     </section>
 
