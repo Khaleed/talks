@@ -89,8 +89,16 @@
                             ## Elm Architecture
                             <ul>
                                 <li class="fragment">Model</li>
+                                <ul>
+                                    <li class="fragment"> Every entity in the game needs some data to define where it is and what it is doing </li>
+                                </ul>
                                 <li class="fragment">Update</li>
+                                <ul>
+                                    <li class="fragment"> How our model can be transformed </li>
+                                </ul>
                                 <li class="fragment">View</li>
+                                <ul> <li class="fragment"> We take our model and produce our game </li>
+                                </ul>
                             </ul>
                         </script>
                     </section>
@@ -98,11 +106,14 @@
                     <section data-markdown>
                         <script type="text/template">
                             ## Immutablity without a library
-                            <ul>
-                                <li class="fragment">Object.assign()</li>
-                                <li class="fragment">Object.freeze()</li>
-                                <li class="fragment">Lispify JS by stealing functions from Clojure</li>
+                            <p> Choice between truly persistent data structures or copying native JavaScript objects </p>
+                            <ul> <li class="fragment">PureRenderMixin</li>
+                                <ul>
+                                    <li class="fragment">Object.assign()</li>
+                                    <li class="fragment">Object.freeze()</li>
+                                </ul>
                             </ul>
+                            <ul> <li class="fragment"> Lispify JS by stealing functions from Clojure</li></ul>
                         </script>
                     </section>
 
