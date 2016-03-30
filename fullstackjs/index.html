@@ -66,7 +66,7 @@
                                 </ul>
         </li>
         <li class="fragment">
-            I discovered Functional Programming
+            I discovered this thing called functional programming
         </li>
                             </ul>
                         </script>
@@ -97,7 +97,7 @@
                                     <li class="fragment"> How our model can be transformed </li>
                                 </ul>
                                 <li class="fragment">View</li>
-                                <ul> <li class="fragment"> We take our model and produce our game </li>
+                                <ul> <li class="fragment"> We take our model and display our game </li>
                                 </ul>
                             </ul>
                         </script>
@@ -152,11 +152,11 @@
                     <section data-markdown>
                         <script type="text/template">
                             ## Model
-                            <p> Space Invaders Game Bodies </p>
+                            <p> Space Invaders </p>
                             <ul>
                                 <li class="fragment">Protagonist</li>
                                 <li class="fragment">Enemies</li>
-                                <li class="fragment">Weaponery</li>
+                                <li class="fragment">Bullets</li>
                             </ul>
                         </script>
                     </section>
@@ -165,23 +165,24 @@
                         <h2>Model</h2>
                         <p> The Protagonist <p>
                             <pre><code class="hljs" data-trim contenteditable>
-                            function Player(args) {
-                            let {x = canvas.width / 2} = args;
-                            let assoc = AssocMixin(Player, args);
-                            let merge = MergeMixin(Player, args);
-                            let that = Object.freeze({
-                            x,
-                            y: canvas.height - 50,
-                            w: 25,
-                            h: 25,
-                            color: 'blue',
-                            assoc,
-                            merge,
-                            update: () => that
-                            });
-                            return that;
-                            }
-                            </code></pre>
+function Player(args) {
+  let {x = canvas.width / 2} = args;
+  let assoc = AssocMixin(Player, args);
+  let merge = MergeMixin(Player, args);
+  let that = Object.freeze({
+    x,
+    y: canvas.height - 50,
+    w: 25,
+    h: 25,
+    color: 'blue',
+    assoc,
+    merge,
+    update: () => that
+  });
+  return that;
+}
+
+                           </code></pre>
                     </section>
 
                     <section>
