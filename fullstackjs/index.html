@@ -44,8 +44,8 @@
                 <section>
                     <section data-markdown>
                         <script type="text/template">
-                            # A Not So Functional Retro Game without a Library
-                            ## Experimenting with JavaScript ES6
+                            # Bringing the Power of Lambda to JavaScript Games
+                            <small>Space Invaders written in a functional-ish style</small>
                         </script>
                     </section>
 
@@ -88,11 +88,10 @@
                         <script type="text/template">
                             ## JavaScript Retro Game
                             <ul>
-                                <li class="fragment">Canvas </li>
-                                <li class="fragment"> Animation </li>
+                                <li class="fragment">Graphics</li>
                                 <li class="fragment">Collission Detection</li>
-                                <li class="fragment">Key Inputs </li>
-                                <li class="fragment">Rendering</li>
+                                <li class="fragment">Keyboard Input</li>
+                                <li class="fragment">Sounds</li>
                             </ul>
                         </script>
                     </section>
@@ -118,15 +117,12 @@
 
                     <section data-markdown>
                         <script type="text/template">
-                            ## Immutablity without a library
-                            <p> Choice between truly persistent data structures or copying native JavaScript objects </p>
-                            <ul> <li class="fragment">PureRenderMixin</li>
-                                <ul>
-                                    <li class="fragment">Object.assign()</li>
+                            ## Immutabality without a library
+                             <p> Truly persistent data structures versus copying native JavaScript objects </p>
+                                <ul> <li class="fragment">Object.assign()</li>
                                     <li class="fragment">Object.freeze()</li>
+                                    <li class="fragment"> Lispify JS by stealing functions from Clojure</li>
                                 </ul>
-                            </ul>
-                            <ul> <li class="fragment"> Lispify JS by stealing functions from ClojureScript</li></ul>
                         </script>
                     </section>
 
@@ -187,7 +183,7 @@ function Player(args) {
     y: canvas.height - 50,
     w: 25,
     h: 25,
-    color: 'blue',
+    color: 'green',
     assoc,
     merge,
     update: () => that
@@ -211,7 +207,7 @@ function Enemy(args) {
     y,
     w: 25,
     h: 25,
-    color: 'red',
+    color: 'white',
     assoc,
     merge,
     update: velX => assoc("x", x + velX)
@@ -311,6 +307,7 @@ let that = Object.freeze({
                     <section data-markdown>
                         <script type="text/template">
                             ## View
+                            <p> Describes how the game will be displayed </p>
                             <p> Demo Time </p>
                             <a href="http://pyb.github.io/ShootEmUp/">Pure Space Invaders</a>
                         </script>
@@ -321,9 +318,12 @@ let that = Object.freeze({
                             ## Lessons Learnt
                             <ul>
                                 <li class="fragment"> How immutablity works under the hood </li>
-                                <li class="fragment"> Simplicity </li>
-                                <li class="fragment"> Code is easier to test </li>
-                                <li class="fragment"> Rendering is faster as we only touch the DOM minimally</li>
+                                <li class="fragment"> How to turn iterations of lists into maps and reduces </li>
+                                <li class="fragment"> How to turn a loop that repeats into a recursion </li>
+                                <li class="fragment"> How to break code into functions and make those functions functional </li>
+                                <li class="fragment"> How to ensure code is easier to test and reason about </li>
+                                <li class="fragment"> How to touch the DOM minimally </li>
+                                <li class="fragment"> How to turn a sequence of operations into a pipe-line </li>
                             </ul>
                         </script>
 
