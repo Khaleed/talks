@@ -258,23 +258,13 @@ function EnemyBullet(args) {
 
                     <section>
                         <h2>Update</h2>
-                        <p> When there is a change in gamestate return a new game state </p>
-                        <pre><code class="hljs" data-trim contenteditable>
-
-function playerShoots() {
-    let newBullets = cond(
-      () => playerBulletNframeCounter === 0, makeNewBullet,
-      () => playerBullets);
-    let newCounter = cond(
-      () => playerBulletNframeCounter > 0, () => playerBulletNframeCounter - 1,
-      () => playerFinalBulletNframeCount);
-    let newGameState = merge({
-      playerBulletNframeCounter: newCounter,
-      playerBullets: newBullets
-    });
-    return newGameState;
-  };i
-                        </code></pre>
+                        <p> The Game State</p>
+                        <ul>
+                            <li class="fragment"> When there is a change in gamestate return a new gamestate </li>
+                            <li class="fragment"> Output value of a function depends only on the arguments to the function </li>
+                            <li class="fragment"> Eliminate side-effects</li>
+                         </ul>
+                        <p>  </p>
                     </section>
 
                     <section>
@@ -318,12 +308,11 @@ let that = Object.freeze({
                             ## Lessons Learnt
                             <ul>
                                 <li class="fragment"> How immutablity works under the hood </li>
-                                <li class="fragment"> How to turn iterations of lists into maps and reduces </li>
-                                <li class="fragment"> How to turn a loop that repeats into a recursion </li>
-                                <li class="fragment"> How to break code into functions and make those functions functional </li>
-                                <li class="fragment"> How to ensure code is easier to test and reason about </li>
-                                <li class="fragment"> How to touch the DOM minimally </li>
-                                <li class="fragment"> How to turn a sequence of operations into a pipe-line </li>
+                                <li class="fragment"> Turn iterations of lists into maps and reduces </li>
+                                <li class="fragment"> Turn a loop that repeats into a recursion </li>
+                                <li class="fragment"> Break code into functions and make those functions functional </li>
+                                <li class="fragment"> Turn a sequence of operations into a pipe-line </li>
+                                <li class="fragment"> How the paradigm makes code easier to test and reason about </li>
                             </ul>
                         </script>
 
