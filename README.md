@@ -4,7 +4,7 @@ These are the talks that I have decided to give in order to share my excitement 
 
 ## Goal
 
-Initially I plan to give talks at meetups. As I gain more confidence, I will apply to give at least two talks at a major JavaScript Conference by the end of this year
+Initially I plan to give talks at meetups. As I gain more confidence, I will apply to give at least two talks at a major JavaScript Conference by the end of this year.
 
 ## Affiliation
 
