@@ -8,6 +8,6 @@ Initially I plan to give talks at meetups. As I gain more confidence, I will app
 
 ## Affiliation
 
-Most of the talks that I am presenting were all based on side projects that I worked on during my glorious time at the Recurse Center.
+Most of the talks that I am presenting are usually based on side projects that I worked on during my glorious time at the Recurse Center.
 
 <a href='http://www.recurse.com' title='Made with love at the Recurse Center'><img src='https://cloud.githubusercontent.com/assets/2883345/11325206/336ea5f4-9150-11e5-9e90-d86ad31993d8.png' height='20px'/></a>
