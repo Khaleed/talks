@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
 
-        <title> Bringing the Power of Lambda to JavaScript Games </title>
+        <title> Exploring Functional Programming Through Games </title>
 
         <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
         <meta name="author" content="Khalid">
@@ -44,7 +44,7 @@
                 <section>
                     <section data-markdown>
                         <script type="text/template">
-                            # Bringing the Power of Lambda to JavaScript Games
+                            # Exploring Functional Programming Through Games
                             <small>Space Invaders written in a functional-ish style</small>
                         </script>
                     </section>
@@ -74,7 +74,29 @@
 
                     <section data-markdown>
                         <script type="text/template">
-                            ## Game Development Is Hard
+                            ## Imperative Programming
+                            <ul>
+                                <li class="fragment">Give computer a sequence of tasks and it executes them</li>
+                                <li class="fragment">As it executes them, it changes state</li>
+                                <li class="fragment">Time</li>
+                            </ul>
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Functional Programming
+                            <ul>
+                                <li class="fragment">Tell the computer what stuff is</li>
+                                <li class="fragment">Do that in the form of functions</li>
+                                <li class="fragment">Eliminate side-effects</li>
+                            </ul>
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Game Development is a Super Fun Way to Learn
                             <ul>
                                 <li class="fragment">Input</li>
                                 <li class="fragment">State</li>
@@ -86,7 +108,7 @@
 
                     <section data-markdown>
                         <script type="text/template">
-                            ## JavaScript Retro Game
+                            ## Space Invaders
                             <ul>
                                 <li class="fragment">Graphics</li>
                                 <li class="fragment">Collission Detection</li>
@@ -109,7 +131,7 @@
                                     <li class="fragment"> How our model can be transformed </li>
                                 </ul>
                                 <li class="fragment">View</li>
-                                <ul> <li class="fragment"> We take our model and display our game </li>
+                                <ul> <li class="fragment"> We take our transformed model and display our game </li>
                                 </ul>
                             </ul>
                         </script>
@@ -121,7 +143,7 @@
                              <p> Truly persistent data structures versus copying native JavaScript objects </p>
                                 <ul> <li class="fragment">Object.assign()</li>
                                     <li class="fragment">Object.freeze()</li>
-                                    <li class="fragment"> Lispify JS by stealing functions from Clojure</li>
+                                    <li class="fragment"> Functions that allow shallow copying of objects</li>
                                 </ul>
                         </script>
                     </section>
