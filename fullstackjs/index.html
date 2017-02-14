@@ -197,8 +197,8 @@
                         <p> The Protagonist <p>
                             <pre><code class="hljs" data-trim contenteditable>
 function Player(args) {
-  let {x = canvas.width / 2} = args;
-  let assoc = AssocMixin(Player, args);
+  const {x = canvas.width / 2} = args;
+  const assoc = AssocMixin(Player, args);
   let merge = MergeMixin(Player, args);
   let that = Object.freeze({
     x,
