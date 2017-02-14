@@ -41,44 +41,25 @@
             <!-- Any section element inside of this container is displayed as a slide -->
             <div class="slides">
 
-                <section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            # Exploring Functional Programming Through Games
-                            <small>Space Invaders written in a functional-ish style</small>
-                        </script>
-                    </section>
-
                     <section data-markdown>
                         <script type="text/template">
                             ## Khalid
                             <ul>
-                                <li class="fragment">Likes to tinker and break things</li>
-                                <li class="fragment">Spent 3 months at <a href="http://recurse.com">Recurse Center</a> in NYC</li>
+                                <li class="fragment">Economist -> Entrepreneur -> Programmer </li>
+                                <li class="fragment">Spent 3 months at <a href="http://recurse.com">the Recurse Center</a></li>
                                 <ul>
-                                    <img style="position: absolute; left: -20px; top: 20%" src="https://d29xw0ra2h4o4u.cloudfront.net/assets/logo-no-text-ab02ba4e6d854337f7d7515e08f57520a82883ace40d22b4de689435cc211ffd.png"/>
-                                    <li  class="fragment">
-                                        Writer's retreat for programmers
-                                    </li>
-                                    <li  class="fragment">
-                                        Become a dramatically better programmer<br/> <small>by working on side projects!</small>
-                                    </li>
+                                    <img style="position: absolute; left: -100px; top: 20%" src="https://d29xw0ra2h4o4u.cloudfront.net/assets/logo-no-text-ab02ba4e6d854337f7d7515e08f57520a82883ace40d22b4de689435cc211ffd.png"/>
+                                    <li  class="fragment">Writer's retreat for programmers </li>
                                 </ul>
-        </li>
-        <li class="fragment">
-            I discovered this thing called functional programming
-        </li>
-                            </ul>
                         </script>
                     </section>
 
+
                     <section data-markdown>
                         <script type="text/template">
-                            ## Imperative Programming
+                            ## Functional Programming
                             <ul>
-                                <li class="fragment">Give computer a sequence of tasks and it executes them</li>
-                                <li class="fragment">As it executes them, it changes state</li>
-                                <li class="fragment">Time</li>
+                                <li class="fragment">Dizzying number of characteristics</li>
                             </ul>
                         </script>
                     </section>
@@ -86,34 +67,22 @@
                     <section data-markdown>
                         <script type="text/template">
                             ## Functional Programming
-                            <ul>
-                                <li class="fragment">Tell the computer what stuff is</li>
-                                <li class="fragment">Do that in the form of functions</li>
-                                <li class="fragment">Eliminate side-effects</li>
-                            </ul>
+                            <img style="position: absolute margin: auto" src="images/scary.png" width="800" height="400"></img>
                         </script>
                     </section>
 
                     <section data-markdown>
                         <script type="text/template">
-                            ## Game Development is a Super Fun Way to Learn
-                            <ul>
-                                <li class="fragment">Input</li>
-                                <li class="fragment">State</li>
-                                <li class="fragment">Time</li>
-                                <li class="fragment">Experiential/fun</li>
-                            </ul>
+                            ## Why JavaScript?
+                            <img style="position: absolute margin: auto" src="images/lambdajs.png" width="400" height="400"></img>
                         </script>
                     </section>
 
                     <section data-markdown>
                         <script type="text/template">
-                            ## Space Invaders
+                            ## Learning with Games
                             <ul>
-                                <li class="fragment">Graphics</li>
-                                <li class="fragment">Collission Detection</li>
-                                <li class="fragment">Keyboard Input</li>
-                                <li class="fragment">Sounds</li>
+                               <li class="fragment"> Playful introduction </li>
                             </ul>
                         </script>
                     </section>
@@ -131,156 +100,33 @@
                                     <li class="fragment"> How our model can be transformed </li>
                                 </ul>
                                 <li class="fragment">View</li>
-                                <ul> <li class="fragment"> We take our transformed model and display our game </li>
-                                </ul>
+                                <ul> <li class="fragment"> We take our transformed model and display our game </li></ul>
                             </ul>
                         </script>
                     </section>
 
                     <section data-markdown>
                         <script type="text/template">
-                            ## Immutability
-                             <p> Truly persistent data structures versus copying native JavaScript objects </p>
-                                <ul> <li class="fragment">Object.assign()</li>
-                                    <li class="fragment">Object.freeze()</li>
-                                    <li class="fragment"> Functions that allow shallow copying of objects</li>
-                                </ul>
-                        </script>
-                    </section>
-
-                    <section data-markdown>
-                        <script>
-                         ## Model
-                         <p> If one thing changes, use assoc <p>
-                         <pre><code class="hljs" data-trim contenteditable>
-                         function AssocMixin(constr, args) {
-                             return (key, val) => {
-                                 let newArgs = Object.assign({}, args);
-                                 newArgs[key] = val;
-                                 return constr(newArgs);
-                             };
-                         }
-                         </code></pre>
-                        </script>
-                    </section>
-
-                    <section data-markdown>
-                        <script>
-                         ## Model
-                         <p> If multiple things change, use merge <p>
-                         <pre><code class="hljs" data-trim contenteditable>
-                         function MergeMixin(constr, args) {
-                             return obj => {
-                                 let copy = Object.assign({}, args);
-                                 let newArgs = Object.assign(copy, obj);
-                                 return constr(newArgs);
-                             }
-                         }
-                         </code></pre>
+                            ## Shooting Game
+                            <ul>
+                                <li class="fragment">Player</li>
+                                <li class="fragment">Enemy</li>
+                                <li class="fragment">Bullets</li>
+                            </ul>
                         </script>
                     </section>
 
                     <section data-markdown>
                         <script type="text/template">
                             ## Model
-                            <p> Space Invaders </p>
                             <ul>
-                                <li class="fragment">Player</li>
-                                <li class="fragment">Enemy</li>
-                                <li class="fragment">Bullet</li>
+                                <li class="fragment">Immutable data structure</li>
                             </ul>
                         </script>
                     </section>
 
                     <section>
-                        <h2>Model</h2>
-                        <p> The Protagonist <p>
-                            <pre><code class="hljs" data-trim contenteditable>
-function Player(args) {
-  const {x = canvas.width / 2} = args;
-  const assoc = AssocMixin(Player, args);
-  let merge = MergeMixin(Player, args);
-  let that = Object.freeze({
-    x,
-    y: canvas.height - 50,
-    w: 25,
-    h: 25,
-    color: 'green',
-    assoc,
-    merge,
-    update: () => that
-  });
-  return that;
-}
-
-                            </code></pre>
-                    </section>
-
-                    <section>
-                        <h2>Model</h2>
-                        <p> The Enemy </p>
-                        <pre><code class="hljs" data-trim contenteditable>
-function Enemy(args) {
-  let {x, y} = args;
-  let assoc = AssocMixin(Enemy, args);
-  let merge = MergeMixin(Enemy, args);
-  let that = Object.freeze({
-    x,
-    y,
-    w: 25,
-    h: 25,
-    color: 'white',
-    assoc,
-    merge,
-    update: velX => assoc("x", x + velX)
-  });
-  return that;
-}
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <h2>Model</h2>
-                        <p> Getting Armed </p>
-                        <pre><code class="hljs" data-trim contenteditable>
-function Bullet(args) {
-  let {x, y, d, color} = args;
-  let assoc = AssocMixin(Bullet, args);
-  let merge = MergeMixin(Bullet, args);
-  let that = Object.freeze({
-    x,
-    y,
-    w: 5,
-    h: 5,
-    d,
-    color,
-    assoc,
-    merge,
-    update: () => assoc("y", y + d)
-  });
-  return that;
-}
-
-function PlayerBullet(args) {
-  let {x, y} = args;
-  return Bullet({
-    x, y, d: -1, color: 'white'
-  });
-}
-
-function EnemyBullet(args) {
-  let {x, y} = args;
-  return Bullet({
-    x, y, d: 1, color: '#FF9900'
-  });
-}
-
-                        </code></pre>
-                    </section>
-
-                    <section>
                         <h2>Update</h2>
-                        <p> The Game State</p>
                         <ul>
                             <li class="fragment"> When there is a change in gamestate return a new gamestate </li>
                             <li class="fragment"> Output value of a function depends only on the arguments to the function </li>
@@ -289,65 +135,70 @@ function EnemyBullet(args) {
                         <p>  </p>
                     </section>
 
-                    <section>
-                        <h2>Update</h2>
-                        <p> When there is no change in gamestate return the old gamestate </p>
-                        <pre><code class="hljs" data-trim contenteditable>
-let that = Object.freeze({
-    x,
-    y,
-    gameRunning,
-    enemyBullets,
-    playerBullets,
-    enemies,
-    playerFinalBulletNframeCount,
-    playerBulletNframeCounter,
-    player,
-    updateIfGameIsRunning,
-    bulletCollision,
-    enemyCollisionWithBorder,
-    enemyShootsAI,
-    updateBodies,
-    playerShoots,
-    updateGameLoop,
-    assoc,
-    merge,
-  });
-                        </code></pre>
+                    <section data-markdown>
+                        <script>
+                         ## Update
+                         <pre><code class="hljs" data-trim contenteditable>
+
+
+                         </code></pre>
+                        </script>
                     </section>
 
                     <section data-markdown>
                         <script type="text/template">
                             ## View
-                            <p> Describes how the game will be displayed </p>
-                            <a href="http://pyb.github.io/ShootEmUp/">Pure Space Invaders</a>
+                            <a href="http://Khaleed.github.io/ShootEmUp/">Pure Space Invaders</a>
                         </script>
                     </section>
 
                     <section data-markdown>
                         <script type ="text/template">
-                            ## Lessons Learnt
+                           ## Resources
                             <ul>
-                                <li class="fragment"> How immutability works under the hood </li>
-                                <li class="fragment"> Turn iterations of lists into maps and reduces </li>
-                                <li class="fragment"> Turn a loop that repeats into a recursion </li>
-                                <li class="fragment"> Break code into functions and make those functions functional </li>
-                                <li class="fragment"> Turn a sequence of operations into a pipe-line </li>
-                                <li class="fragment"> Functional paradigm makes code easier to test and reason about </li>
+                                <li class="fragment"> Introduction to Functional Programming by Mary Rose Cook
+                                    <p>https://codewords.recurse.com/issues/one/an-introduction-to-functional-programming</p>
+                                </li>
+                                <li class="fragment"> Professor Frisby's Mostly Adequate Guide to Functional Programming
+                                    <p>https://github.com/MostlyAdequate/mostly-adequate-guide</p>
+                                </li>
                             </ul>
                         </script>
+                    </section>
 
+                    <section data-markdown>
+                        <script type ="text/template">
+                           ## Resources
+                            <ul>
+                                <li class="fragment"> Immutable JS
+                                    <p>https://github.com/facebook/immutable-js</p>
+                                </li>
+                                <li class="fragment"> The Elm Architecture
+                                    <p>https://guide.elm-lang.org/architecture/</p>
+                                </li>
+                            </ul>
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type ="text/template">
+                            ## Credits
+                            <ul>
+                                <li class="fragment"> Recurse Center Community </li>
+                                <li class="fragment"> WeAllJS </li>
+                                <li class="fragment"> Functional JS Picture: http://www.frontendmasters.com</li>
+                                <li class="fragment"> Scary Picture: http://www.theshoreditcharch.co.uk </li>
+                                <ul>
+                        </script>
                     </section>
 
                     <section data-markdown>
                         <script type="text/template">
                             ## That's it folks, thank you!
-                            <p>https://github.com/Khaleed/ShootEmUp<p>
+                            <p>https://github.com/Khaleed<p>
                         </script>
                     </section>
-
             </div>
-
         </div>
 
         <script src="lib/js/head.min.js"></script>
